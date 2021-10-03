@@ -3,13 +3,13 @@ import { Auth, Hub } from 'aws-amplify';
 // import Login from './Login';
 import Portal from './Portal';
 
-type User =  {
+type User = {
   attributes: {
     email: string
   }
 } | null
 type GlobalContextType = {
-  user:User
+  user: User
 }
 export const GlobalContext = React.createContext<GlobalContextType>({
   user: null
@@ -51,27 +51,5 @@ function App() {
       <Portal />
     </GlobalContext.Provider >
   )
-  // else
-  //   return <Login />
-  // return (
-  //     <p>User: {user ? JSON.stringify(user.attributes) : 'None'}</p>
-  //     {user ? (
-  //       <button onClick={() => Auth.signOut()}>Sign Out</button>
-  //     ) : (
-  //       <Login/>
-  //   <Button 
-  //   variant="contained"
-  //   color="primary"
-  //   className={classes.button}
-  //   startIcon={<FacebookIcon />}
-  //   onClick={() => {
-  //     //@ts-ignore
-  //     Auth.federatedSignIn({ provider: 'Facebook' })
-  //   }}>
-  //     Facebook Login
-  //   </Button>
-  // )}    
-  // );
 }
-
-export default App;
+export default App

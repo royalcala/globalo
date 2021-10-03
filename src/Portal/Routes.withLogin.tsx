@@ -1,12 +1,7 @@
 import React from 'react'
-import { GlobalContext } from '../../App'
+import { Redirect } from 'react-router-dom'
+import { GlobalContext } from '../App'
 
-
-function PageRequireLogin() {
-    return (
-        <div>Requires login</div>
-    )
-}
 
 
 const withLogin = (Component: React.ElementType) => (props: any) => {
@@ -15,7 +10,7 @@ const withLogin = (Component: React.ElementType) => (props: any) => {
     if (globalContext.user)
         return <Component />
     else
-        return <PageRequireLogin />
+        return <Redirect to="/login" />
 }
 
 

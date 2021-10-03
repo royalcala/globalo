@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { Auth, Hub } from 'aws-amplify';
+import React from 'react';
+import { Auth } from 'aws-amplify';
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import IconButton from "@mui/material/IconButton";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
-import FacebookIcon from '@mui/icons-material/Facebook';
+// import FacebookIcon from '@mui/icons-material/Facebook';
+import PersonIcon from '@mui/icons-material/Person';
 import { GlobalContext } from '../App';
-
+import { useHistory } from 'react-router-dom';
 
 export default function MenuSession() {
+    let history = useHistory();
     const globalContext = React.useContext(GlobalContext)
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -54,6 +56,7 @@ export default function MenuSession() {
                     <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
                     <MenuItem onClick={async () => {
                         await Auth.signOut();
+                        history.push("/login");
                         handleMenuClose()
                     }}>Cerrar Sesion</MenuItem>
                 </Menu>
@@ -63,11 +66,12 @@ export default function MenuSession() {
         return (
             <Button
                 color="inherit"
-                //  className={classes.buttonLogin}
-                startIcon={<FacebookIcon />}
+                startIcon={<PersonIcon />}
                 onClick={() => {
                     //@ts-ignore
-                    Auth.federatedSignIn({ provider: 'Facebook' })
+                    // Auth.federatedSignIn({ provider: 'Facebook' })
+                    // Auth.federatedSignIn()
+                    history.push("/login");
                 }}>
                 Login
             </Button>

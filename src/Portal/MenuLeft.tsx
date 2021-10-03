@@ -2,10 +2,8 @@ import React from 'react';
 import List from '@mui/material/List';
 import Drawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
-import MenuPublic from './MenuDrawerLeft.Public'
-import MenuCatalog from './MenuDrawerLeft.Catalog'
 import ListSubheader from '@mui/material/ListSubheader';
-
+import { Menu as MenuSession } from './menuLeft/Session'
 type MenuContextType = {
   toggleDrawer: (open: boolean) => void
 }
@@ -46,7 +44,7 @@ export default function MenuDrawerLeft({ drawer, setDrawer }: { drawer: boolean,
           aria-labelledby="nested-list-subheader"
           subheader={
             <ListSubheader component="div" id="nested-list-subheader">
-              InmueblesYaa
+              globalo.shop
             </ListSubheader>
           }
         >
@@ -55,14 +53,7 @@ export default function MenuDrawerLeft({ drawer, setDrawer }: { drawer: boolean,
               setDrawer(open);
             }
           }}>
-            {/* <ListItemButton>
-            <ListItemIcon>
-              <SendIcon />
-            </ListItemIcon>
-            <ListItemText primary="Sent mail" />
-          </ListItemButton> */}
-            <MenuPublic />
-            <MenuCatalog />
+            <MenuSession />
           </MenuContext.Provider>
         </List>
       </Box>

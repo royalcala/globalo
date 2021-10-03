@@ -2,14 +2,14 @@ import React from 'react'
 import {
     useParams
 } from "react-router-dom";
-import withContainer from './withContainer'
+import withLogin from '../Routes.withLogin';
+import withContainer from '../Routes.withContainer'
 import { getCompany } from '../../graphql/queries'
 import { updateCompany } from '../../graphql/mutations'
 import { API } from 'aws-amplify';
 import { GetCompanyQuery, UpdateCompanyMutation } from '../../API'
 import FormEdit, { DataType } from '../../Components/Form.Edit'
 
-import withLogin from './withLogin';
 function Edit() {
     let { id } = useParams<{ id: string }>();
     return (
